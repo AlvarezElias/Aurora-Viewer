@@ -1,11 +1,22 @@
+---
+id: "GFX-004"
+title: "Generative image enhancement"
+area: "Neural rendering"
+stage: "analysed"
+interest: "Primary"
+researched: "2026-11-22"
+updated: "2026-11-23"
+summary: "Explore changes to apparent lighting, skin, materials and detail."
+next_step: "Check permitted model use and compare synthetic demo images with local M3 Max measurements."
+evidence: ""
+---
+
 # GFX-004: Generative image enhancement
 
 [Epic](../../README.md) · [Analysis](../../ANALYSIS.md) · [Validation](../../VALIDATION.md)
 
 | Field | Value |
 | --- | --- |
-| Research | Analysed on 2026-11-22; documented in the fork on 2026-11-23 |
-| Implementation | Not started; main visual interest, separate from MetalFX reconstruction |
 | Dependency | Suitable model/backend, permitted use, product scope and an offline comparison |
 | Evidence | External reports only; no local inference or M3 Max measurements |
 

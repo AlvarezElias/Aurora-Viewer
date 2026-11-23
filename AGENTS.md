@@ -13,6 +13,11 @@ planning context, not an instruction to implement every idea. These
 fork-specific instructions stay on `develop`, outside official `main` and
 upstream feature PRs.
 
+For personal-fork collaboration and the available project skills, also follow
+[fork-docs/COLLABORATION.md](fork-docs/COLLABORATION.md). Research Markdown is
+the source of the generated presentation; preserve the distinction between
+analysis, implementation, measurements and human acceptance.
+
 Several humans work on this repository, each with several agents in parallel
 on different modules. These rules are there so that nobody breaks anyone
 else's work.

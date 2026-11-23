@@ -1,11 +1,22 @@
+---
+id: "GFX-003"
+title: "Neural denoising for lighting"
+area: "Lighting"
+stage: "analysed"
+interest: "Exploratory"
+researched: "2026-11-22"
+updated: "2026-11-23"
+summary: "Clean noisy lighting or reflection signals after a suitable source effect exists."
+next_step: "Select a bounded source effect and define its noise-free auxiliary buffers."
+evidence: ""
+---
+
 # GFX-003: Neural denoising for lighting
 
 [Epic](../../README.md) · [Analysis](../../ANALYSIS.md) · [Validation](../../VALIDATION.md)
 
 | Field | Value |
 | --- | --- |
-| Research | Analysed on 2026-11-22; documented in the fork on 2026-11-23 |
-| Implementation | Not started; exploratory and conditional |
 | Dependency | A selected noisy lighting/reflection effect and suitable auxiliary buffers |
 | Evidence | No source-effect prototype, denoiser execution or local comparison |
 

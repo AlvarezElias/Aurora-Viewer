@@ -1,11 +1,22 @@
+---
+id: "GFX-002"
+title: "Native frame interpolation"
+area: "Smoothness"
+stage: "analysed"
+interest: "Medium"
+researched: "2026-11-22"
+updated: "2026-11-23"
+summary: "Generate intermediate images while keeping rendered and presented FPS distinct."
+next_step: "Build on GFX-001 input work and define UI composition, pacing and latency measurements."
+evidence: ""
+---
+
 # GFX-002: Native frame interpolation
 
 [Epic](../../README.md) · [Analysis](../../ANALYSIS.md) · [Validation](../../VALIDATION.md)
 
 | Field | Value |
 | --- | --- |
-| Research | Analysed on 2026-11-22; documented in the fork on 2026-11-23 |
-| Implementation | Not started |
 | Dependency | GFX-001 interoperability/input work; composition and pacing design |
 | Evidence | No interpolator execution, timing measurements or human validation |
 
