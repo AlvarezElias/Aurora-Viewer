@@ -2005,6 +2005,7 @@ aurora-viewer/                  git repository (GitHub: Aurora-Viewer/Aurora-Vie
 │  └─ emoji/                    Noto Color Emoji font and its licence (built into the exe)
 ├─ crates/                      the code (see below)
 ├─ docs/                        BRANDING.md, TESTING.md (`AURORA_*` test options, profiling), README screenshots (`screenshots/`), README buttons and "Soon" pill (`readme/`)
+├─ fork-docs/                   personal-fork research only: epic analysis, decisions, validation plans and per-task folders (GFX-001 through GFX-004); kept on develop, outside the official wiki
 ├─ fuzz/                        fuzzing of the readers of untrusted data (its own workspace, outside the build): targets (`src/lib.rs`), stable runner `fuzz-local` (`src/main.rs`), libFuzzer binaries (`fuzz_targets/`), run nightly by `.github/workflows/fuzz.yml`
 ├─ news/                        news of the login screen, written by hand: fr.md, en.md (read on `main` by the viewer, and compiled into it)
 ├─ packaging/licenses/         cargo-about configuration and template of THIRD-PARTY-LICENSES.md

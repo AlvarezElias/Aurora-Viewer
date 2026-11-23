@@ -6,6 +6,20 @@ integrated features and validation status are tracked in [TASKS.md](TASKS.md).
 Agents must follow [FORK_WORKFLOW.md](FORK_WORKFLOW.md) for branch management
 and personal integration.
 
+## Apple Silicon graphics
+
+Investigate native MetalFX reconstruction and interpolation on the M3 Max,
+conditional neural denoising for a defined lighting effect, and experimental
+generative image enhancement. The latter is the main visual interest;
+MetalFX reconstruction alone does not provide it.
+
+The [GFX epic](fork-docs/epics/apple-silicon-graphics/README.md) contains the
+analysis, decisions, shared validation plan and separate GFX-001 through
+GFX-004 folders. GFX-001 is the first prepared implementation task. All four
+remain research only: no prototype, local benchmark or human validation.
+The epic records the official no-AI product claim and unresolved model-use
+and distribution questions before a runtime feature is chosen.
+
 ## Tabbed viewer sessions
 
 Open independent viewer sessions as tabs. Reorder tabs by dragging, detach a

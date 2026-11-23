@@ -1,5 +1,11 @@
 # Aurora Viewer — task tracking
 
+- ✅ Personal fork graphics research documentation (human request, 2026-11-23; task `gfx-research-epic`; no issue): the [Apple Silicon graphics epic](fork-docs/epics/apple-silicon-graphics/README.md) records the analysis, decisions, validation plan and separate GFX-001 through GFX-004 folders, for personal `develop` only. Nine Markdown documents and 53 local references/anchors checked; `git diff --check` clean. Full `check.ps1` unavailable because PowerShell is not installed; no renderer code or dependencies changed. Runtime implementation, measurements and human validation remain pending.
+  - ⬜ [GFX-001](fork-docs/epics/apple-silicon-graphics/tasks/GFX-001/README.md): first implementation task, native MetalFX temporal reconstruction; device support, GPU interoperability and an equivalent FSR 3.1 comparison remain pending.
+  - ⬜ [GFX-002](fork-docs/epics/apple-silicon-graphics/tasks/GFX-002/README.md): native frame interpolation; composition, pacing, latency and rendered/presented FPS measurements remain pending.
+  - ⬜ [GFX-003](fork-docs/epics/apple-silicon-graphics/tasks/GFX-003/README.md): conditional neural denoising; select a source effect and define auxiliary buffers first.
+  - ⬜ [GFX-004](fork-docs/epics/apple-silicon-graphics/tasks/GFX-004/README.md): generative appearance research; permitted model use, fork product scope, offline comparisons and M3 Max measurements remain pending.
+
 - ✅ Personal fork agent workflow (human request, 2026-11-23; no issue): root `FORK_WORKFLOW.md` defines the official `main` mirror, personal `develop` integration, independent feature branches, preservation of local work and upstream PR separation. AGENTS.md requires reading it and WISHLIST.md at session startup. WISHLIST.md contains desired features only; implementation and validation stay here. Documentation-only change, kept on the personal fork.
 
 - ✅ Offline RLVa self-test (task `rlva-selftest-stop-phase2`): rezzed demo objects receive distinct local IDs even when their inventory UUIDs have the same suffix. Wearing and removing a test attachment keeps the original outfit in place.
