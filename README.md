@@ -28,6 +28,8 @@ A Vulkan renderer, a clean interface, and the Second Life you already know.
 Personal fork: [workflow](FORK_WORKFLOW.md), [wishlist](WISHLIST.md) and
 [research epics](fork-docs/README.md). These records do not describe additional
 features in the official downloads.
+See [working together](fork-docs/COLLABORATION.md) for project skills, the
+reviewer and the generated research presentation.
 
 **Multi-threaded from the ground up: parallel loading, ultra fast teleports, built for today's hardware with Vulkan and Rust.**  
 <img width="1920" height="1032" alt="Aurora Viewer in a Japanese garden, with the People, Controls, Places, Inventory, Performance and Conversations windows open" src="docs/screenshots/world.webp" />  

@@ -29,7 +29,14 @@ personal research to the upstream `docs/` wiki catalogue.
 - Mark the original source-review date separately from later document edits.
   Recheck API versions, project licences and upstream activity before coding.
 
-Use English in this repository. The personal Spanish presentation is a
-separate local artifact; it is not the authoritative implementation record.
+## Collaboration and presentation tools
+
+- [Working together](COLLABORATION.md): scope, communication and the three
+  project skills plus the reviewer definition.
+- [Tracker](TRACKER.md): task metadata, evidence gates and offline HTML generation.
+
+Use English in this repository and its generated presentation. The earlier
+personal Spanish files remain a historical record; current presentation data
+comes only from this Markdown tree. No MCP is installed or configured.
 Do not commit proprietary model weights, runtime DLLs, cache contents,
 personal paths, grid data or credentials as research evidence.

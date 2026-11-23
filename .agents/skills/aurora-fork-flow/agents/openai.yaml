@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aurora Fork Flow"
+  short_description: "Work safely with personal fork branches"
+  default_prompt: "Use $aurora-fork-flow to handle this fork task within its authorized scope."

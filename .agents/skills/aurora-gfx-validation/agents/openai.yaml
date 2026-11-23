@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aurora Graphics Validation"
+  short_description: "Plan reproducible graphics comparisons"
+  default_prompt: "Use $aurora-gfx-validation to plan or record evidence for this graphics task."

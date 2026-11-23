@@ -81,12 +81,18 @@ workspace.
   decisions and task folders. Read the relevant epic before starting one of
   its tasks. Research records and acceptance checklists are not evidence of
   implementation or human validation.
+- [Collaboration guidance](fork-docs/COLLABORATION.md) scopes research,
+  implementation, review and authorized integration. Project skills in
+  `.agents/skills/` and the reviewer in `.codex/agents/` reference these rules.
+  [The tracker](fork-docs/TRACKER.md) generates HTML from canonical Markdown;
+  it is not a second backlog. No MCP is configured by this toolkit.
 - TASKS.md records active implementation, integrated features, validation
   status, upstream issue/PR links and remaining work. Update only the lines
   belonging to the current task.
 - Feature-specific user instructions belong in the existing relevant guides.
 
-Keep this file, `fork-docs/` and the fork additions to AGENTS.md on `develop`
+Keep this file, `fork-docs/`, personal project skills/reviewer/tools and the
+fork additions to AGENTS.md on `develop`
 and personal branches derived from it. Do not copy them into the mirror
 `main`, submit them upstream or alter the official wiki as part of this
 personal workflow.

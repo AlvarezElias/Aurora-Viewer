@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aurora Research to Epic"
+  short_description: "Turn research into traceable fork epics"
+  default_prompt: "Use $aurora-research-to-epic to document this idea and refresh its presentation."

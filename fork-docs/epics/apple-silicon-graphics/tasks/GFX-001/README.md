@@ -1,11 +1,22 @@
+---
+id: "GFX-001"
+title: "Native MetalFX temporal reconstruction"
+area: "Reconstruction"
+stage: "analysed"
+interest: "High"
+researched: "2026-11-22"
+updated: "2026-11-23"
+summary: "Compare native MetalFX reconstruction with FSR 3.1 on the M3 Max."
+next_step: "Verify OS/device support and prove native GPU texture/command interoperability."
+evidence: ""
+---
+
 # GFX-001: Native MetalFX temporal reconstruction
 
 [Epic](../../README.md) · [Analysis](../../ANALYSIS.md) · [Validation](../../VALIDATION.md)
 
 | Field | Value |
 | --- | --- |
-| Research | Analysed on 2026-11-22; documented in the fork on 2026-11-23 |
-| Implementation | Not started; first task prepared for implementation |
 | Target | M3 Max, with runtime OS/device support checks |
 | Dependencies | Native texture/command interoperability and existing FSR/TAA inputs |
 | Evidence | No local support query, prototype, measurements or human validation |
