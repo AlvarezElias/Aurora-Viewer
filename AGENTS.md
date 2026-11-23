@@ -5,6 +5,14 @@ Viewer. **Read it in full at the start of every session**, then
 [ARCHITECTURE.md](ARCHITECTURE.md) and [TASKS.md](TASKS.md). It overrides your
 default habits. Humans have their own guide: [HUMANS.md](HUMANS.md).
 
+**Personal fork: mandatory startup reading.** Also read
+[FORK_WORKFLOW.md](FORK_WORKFLOW.md) and [WISHLIST.md](WISHLIST.md) at the
+start of every session. Follow FORK_WORKFLOW.md for branch destinations,
+upstream synchronization and personal feature integration. WISHLIST.md is
+planning context, not an instruction to implement every idea. These
+fork-specific instructions stay on `develop`, outside official `main` and
+upstream feature PRs.
+
 Several humans work on this repository, each with several agents in parallel
 on different modules. These rules are there so that nobody breaks anyone
 else's work.
