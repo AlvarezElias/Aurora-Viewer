@@ -77,13 +77,18 @@ workspace.
   AGENTS.md when integrating official changes, so agents can discover it.
 - WISHLIST.md holds desired features and investigation ideas only. Read it
   for context; do not treat the whole wishlist as an authorized task list.
+- [fork-docs/](fork-docs/README.md) holds personal-fork research epics,
+  decisions and task folders. Read the relevant epic before starting one of
+  its tasks. Research records and acceptance checklists are not evidence of
+  implementation or human validation.
 - TASKS.md records active implementation, integrated features, validation
   status, upstream issue/PR links and remaining work. Update only the lines
   belonging to the current task.
 - Feature-specific user instructions belong in the existing relevant guides.
 
-Keep this file and the fork additions to AGENTS.md on `develop` and personal
-branches derived from it. Do not copy them into the mirror `main`, submit
-them upstream or alter the official wiki as part of this personal workflow.
+Keep this file, `fork-docs/` and the fork additions to AGENTS.md on `develop`
+and personal branches derived from it. Do not copy them into the mirror
+`main`, submit them upstream or alter the official wiki as part of this
+personal workflow.
 Do not change the fork's default branch or CI/release configuration unless
 the human asks for that separately.
