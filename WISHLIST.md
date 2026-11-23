@@ -2,6 +2,30 @@
 
 Ideas for future work on the fork's `develop` branch.
 
+## Fork branch workflow
+
+- `main` mirrors the official repository's `main`. Update it by fast-forward
+  only and keep personal features out of it.
+- `develop` combines the official baseline with the fork's personal features.
+  Build this branch to use those features together, even while upstream pull
+  requests are awaiting review.
+- Keep each feature on its own branch based on official `main`. Merge it into
+  `develop` when it is ready for personal integration; submit upstream pull
+  requests from the feature branch, so the fork's other changes stay separate.
+
+Bring official updates into `main` first, then merge `main` into `develop`,
+resolving conflicts while retaining the personal features. Each branch has
+its own worktree. Keep unfinished work on its feature branch until it is ready
+to integrate. Merging into `develop` does not imply upstream acceptance,
+human validation, or inclusion in an official release.
+
+### Included in the personal branch
+
+- Quick lens presets in Camera Controls: 24, 35, 50, 85 and 135 mm, plus
+  reset, in both layouts and the free-camera tab. Integrated on 2026-11-23;
+  [upstream PR #3730](https://github.com/Aurora-Viewer/Aurora-Viewer/pull/3730)
+  remains separate. Integrated runtime checks and human validation are pending.
+
 ## Tabbed viewer sessions
 
 Open independent viewer sessions as tabs. Reorder tabs by dragging, detach a

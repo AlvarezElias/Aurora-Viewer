@@ -14,6 +14,7 @@ impl App {
         let flight = self.snapshots.ui.free;
         let view = View {
             zoom: self.camera.zoom_fraction(),
+            lens_fov: self.camera_lens(),
             roll: self.camera.roll,
             preset: self.settings.camera.preset,
             shots: &self.settings.camera_shots,
@@ -21,6 +22,13 @@ impl App {
             flying: self.world.agent.flying,
             always_run: self.always_run,
             seated: self.world.agent.seated,
+            // the answers `set_always_run`, `toggle_fly` and the send
+            // boundary give, so a button never promises what they refuse
+            run_locked: self.world.rlva.has("alwaysrun"),
+            fly_locked: !self.world.agent.flying && !crate::autopilot::can_takeoff(&self.world),
+            stand_locked: !self
+                .world
+                .rlva_allows_command(&NetCommand::OneShotControl(control::STAND_UP), uuid::Uuid::nil()),
             mouselook: self.camera.mouselook(),
             object_view: self.object_view,
             keys: &self.settings.keybinds,
@@ -62,6 +70,26 @@ impl App {
         );
     }
 
+    pub(super) fn camera_lens(&self) -> f32 {
+        let shown = self.world.rlva.camera_settings(&self.settings.camera, self.view_aspect()).fov;
+        self.camera.flycam.as_ref().map_or(shown, |flight| flight.fov)
+    }
+
+    pub(super) fn change_camera_lens(&mut self, fov: f32, factor: Option<f32>) {
+        // LLZoomer (indra/newview/llviewermenu.cpp): a user lens change
+        // replaces a forced FOV even under @setcam; FOV bounds still apply.
+        let aspect = self.view_aspect();
+        let fov = crate::camera::zoom_lens(fov, factor, aspect, self.world.rlva.camera_fov_limits(aspect));
+        self.settings.camera.fov = fov;
+        self.world.rlva.user_chose_fov();
+        if let Some(flight) = &mut self.camera.flycam {
+            flight.set_fov(fov);
+        }
+        if !self.demo {
+            self.settings.save();
+        }
+    }
+
     fn control_action(&mut self, action: ControlAction) {
         if self.world.rlva.camera_preset_locked(uuid::Uuid::nil())
             && matches!(
@@ -95,9 +123,16 @@ impl App {
             }
             ControlAction::LevelRoll => self.camera.roll = 0.0,
             ControlAction::Zoom(fraction) => self.camera.set_zoom_fraction(fraction),
+            ControlAction::Lens(fov) => self.change_camera_lens(fov, Some(1.0)),
             ControlAction::Mouselook => self.toggle_mouselook(),
             ControlAction::ObjectView => self.object_view = !self.object_view,
             ControlAction::Walk | ControlAction::Run => {
+                // @alwaysrun: the Run mode is greyed (LLFloaterMove::
+                // sUpdateMovementStatus), and a refused Run must not land
+                // a flying avatar on its way to being refused
+                if action == ControlAction::Run && self.world.rlva.has("alwaysrun") {
+                    return;
+                }
                 if self.world.agent.flying {
                     self.toggle_fly();
                 }
@@ -133,6 +168,69 @@ impl App {
             ControlAction::DeleteShot(i) => self.delete_camera_preset(i),
             ControlAction::SaveView(view) => self.save_camera_view(view),
             ControlAction::RestoreView(view) => self.restore_camera_view(view),
+            ControlAction::Position => {
+                crate::ui::widgets::toggle_floater(&self.egui_ctx, crate::ui::camera_position::WINDOW, &mut self.panels.camera_position)
+            }
+        }
+    }
+
+    /// The camera position window (#4587): the live offsets and distance.
+    /// The camera reads them each frame; RLVa keeps them under its lock, and
+    /// an edit ends the offsets a force put in place, as an edit in
+    /// Preferences does (`preserve_camera_settings`). Saved once the
+    /// pointer is released; its save goes the Controls window's way.
+    pub(super) fn camera_position_window(&mut self, ctx: &egui::Context, p: &Palette) {
+        self.camera_position_demo();
+        let locked = self.world.rlva.camera_preset_locked(uuid::Uuid::nil());
+        let mut open = self.panels.camera_position;
+        let before = self.settings.camera.clone();
+        let out = self.camera_position_ui.show(ctx, p, &mut open, &mut self.settings, locked);
+        self.panels.camera_position = open;
+        if out.changed {
+            self.world.rlva.preserve_camera_settings(&mut self.settings.camera, &before);
+        }
+        if out.save_settings {
+            self.settings.save();
+        }
+        if let Some(name) = out.save {
+            self.control_action(ControlAction::SaveShot(name));
+        }
+    }
+
+    /// AURORA_DEMO_CONTROLS=position | classic-position (#4587): the
+    /// Controls window (Aurora's or the Legacy Viewer's) and the camera
+    /// position window open at 600; at 640 the camera is raised 0.5 m as
+    /// five Ctrl + wheel clicks do, which the window's Z shows at once. The
+    /// log gives the offsets before and after.
+    fn camera_position_demo(&mut self) {
+        if !self.demo
+            || !matches!(
+                std::env::var("AURORA_DEMO_CONTROLS").as_deref(),
+                Ok("position" | "classic-position")
+            )
+        {
+            return;
+        }
+        match self.frame_count {
+            600 => {
+                self.settings.classic_controls = std::env::var("AURORA_DEMO_CONTROLS").as_deref() == Ok("classic-position");
+                self.panels.camera_controls = true;
+                crate::ui::widgets::place_floater(
+                    &self.egui_ctx,
+                    crate::ui::camera_position::WINDOW,
+                    egui::pos2(360.0, 120.0),
+                    egui::vec2(crate::ui::camera_position::WIDTH, 200.0),
+                );
+                self.panels.camera_position = true;
+                log::info!("demo camera position: camera offset {:?}", self.settings.camera.camera_offset);
+            }
+            640 => {
+                let c = &mut self.settings.camera;
+                c.camera_offset[2] += 0.5;
+                c.preset = crate::camera::CameraPreset::Custom;
+                log::info!("demo camera position: raised to {:?}", c.camera_offset);
+            }
+            _ => {}
         }
     }
 
